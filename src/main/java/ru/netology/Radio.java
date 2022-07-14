@@ -1,72 +1,76 @@
 package ru.netology;
 
 public class Radio {
-    private int currentStation;
-    private int currentVolume;
+    private int currentStation = 5;
+    private int currentVolume = 50;
     private int countStation = 10;
-    private int minStation = 0;
-    private int maxStation = countStation-1;
-    private int minVolume = 0;
-    private int maxVolume = 100;
+    private final int minStation = 0;
+    private int maxStation = countStation - 1;
+    private final int minVolume = 0;
+    private final int maxVolume = 100;
+
+    public Radio(int countStation) {
+        this.countStation = countStation;
+        this.maxStation = countStation - 1;
+    }
 
     public int getCurrentStation() {
         return currentStation;
     }
 
-    public void setCurrentStation(int currentStation) {
-        if (currentStation > 9) {
-            this.currentStation = 9;
+    public void setCurrentStation(int newStation) {
+        if (newStation > maxStation) {
             return;
         }
-        if (currentStation < 0) {
-            this.currentStation = 0;
+        if (newStation < minStation) {
             return;
         }
-        this.currentStation = currentStation;
+        currentStation = newStation;
     }
 
     public void stationNext() {
-        if (currentStation < 9) {
-            this.currentStation = currentStation + 1;
-            return;
+        if (currentStation == maxStation) {
+            currentStation = minStation;
+        } else {
+            currentStation = currentStation + 1;
         }
-        this.currentStation = 0;
     }
 
     public void stationPrev() {
-        if (currentStation > 0) {
-            this.currentStation = currentStation - 1;
-            return;
+        if (currentStation == minStation) {
+            currentStation = maxStation;
+        } else {
+            currentStation = currentStation - 1;
         }
-        this.currentStation = 9;
     }
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
-    public void setCurrentVolume(int currentVolume) {
-        if (currentVolume > 10) {
-            this.currentVolume = 10;
+    public void setCurrentVolume(int newVolume) {
+        if (newVolume > maxVolume) {
             return;
         }
-        if (currentVolume < 0) {
-            this.currentVolume = 0;
+        if (newVolume < minVolume) {
             return;
         }
-        this.currentVolume = currentVolume;
+        currentVolume = newVolume;
     }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
-            this.currentVolume = currentVolume + 1;
+        if (currentVolume < maxVolume) {
+            currentVolume = currentVolume + 1;
+        } else {
+            currentVolume = maxVolume;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             this.currentVolume = currentVolume - 1;
+        } else {
+            currentVolume = minVolume;
         }
     }
-
 }
