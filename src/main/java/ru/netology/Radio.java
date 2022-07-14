@@ -3,6 +3,11 @@ package ru.netology;
 public class Radio {
     private int currentStation;
     private int currentVolume;
+    private int countStation = 10;
+    private int minStation = 0;
+    private int maxStation = countStation-1;
+    private int minVolume = 0;
+    private int maxVolume = 100;
 
     public int getCurrentStation() {
         return currentStation;
