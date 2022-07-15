@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RadioTest {
-    Radio station = new Radio(10);
+    Radio station = new Radio(10, 50);
 
     @Test
     public void stationEntered() {
